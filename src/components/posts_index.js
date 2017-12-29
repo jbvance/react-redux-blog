@@ -7,7 +7,7 @@ import { fetchPosts } from '../actions';
 class PostsIndex extends Component {
 
     componentDidMount() {
-       this.props.fetchPosts(); 
+        this.props.fetchPosts();
     }
 
     renderPosts() {
@@ -17,7 +17,9 @@ class PostsIndex extends Component {
         return _.map(this.props.posts, post => {
             return (
                 <li key={post.id} className="list-group-item">
-                    <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                    <Link to={`/posts/${post.id}`}>
+                        {post.title}
+                    </Link>
                 </li>
             );
         })
@@ -43,7 +45,7 @@ class PostsIndex extends Component {
 }
 
 function mapStateToProps(state) {
-    return {posts: state.posts}
+    return { posts: state.posts }
 }
 
-export default connect(mapStateToProps, {fetchPosts: fetchPosts})(PostsIndex);
+export default connect(mapStateToProps, { fetchPosts: fetchPosts })(PostsIndex);
